@@ -15,7 +15,8 @@ const findAndDelete = function(id) {
 
 const findAndUpdate = function(id, newData) {
   const findItem = this.items.find(itemId => itemId.id === id);
-  return Object.assign(newData, findItem);
+  const newObj = Object.assign(newData, findItem);
+  this.items[this.items.indexOf(findItem)] = newObj;
 };
 
 const toggleCheckedFilter = function() {
