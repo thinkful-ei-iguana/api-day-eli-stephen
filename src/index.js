@@ -10,15 +10,15 @@ import shoppingList from "./shopping-list";
 const main = function() {
   api
     .getItems()
-    .then(res => res.json())
     .then(items => {
       items.forEach(item => store.addItem(item));
       shoppingList.render();
-    });
+      shoppingList.bindEventListeners();
+    })
+    .catch(err => console.log("error", err));
 
-  api.getItems();
-  shoppingList.bindEventListeners();
-  shoppingList.render();
+  // api.getItems();
+  // shoppingList.render();
 };
 
 $(main);
